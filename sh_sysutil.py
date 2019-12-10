@@ -1,6 +1,6 @@
 """ ------------
 module: sh_sysutils
-version: 1.1.20191018
+version: 1.2.20191018
 
 Module defines systems utilities.
 -------------"""
@@ -58,7 +58,9 @@ class shExeFile:
 
     def run(self, useShell=False):
         import subprocess
-        result = subprocess.run ([self.exeFileName, self.arguments], shell=useShell)
+        result = subprocess.run (
+            [self.exeFileName, self.arguments] if (self.arguments) else self.exeFileName, 
+            shell=useShell)
         return result.returncode
 
 
